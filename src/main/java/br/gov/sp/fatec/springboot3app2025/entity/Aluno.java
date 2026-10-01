@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.springboot3app2025.entity;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class Aluno {
     private String nome;
 
     @Column(name = "aln_data_nascimento")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private LocalDate dataNascimento;
 
     public Aluno(Long ra, String nome, LocalDate dataNascimento) {
