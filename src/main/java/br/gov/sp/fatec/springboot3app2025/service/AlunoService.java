@@ -8,4 +8,3 @@ public interface AlunoService {
     public Aluno cadastrar(Aluno aluno);
     public List<Aluno> buscarTodos();
 }
-
