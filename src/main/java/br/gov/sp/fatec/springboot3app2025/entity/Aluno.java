@@ -21,19 +21,19 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aln_id")
-    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
+    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class})
     private Long id;
 
     @Column(name = "aln_ra")
-    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
+    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class})
     private Long ra;
 
     @Column(name = "aln_nome")
-    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
+    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class})
     private String nome;
 
     @Column(name = "aln_data_nascimento")
-    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
+    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class})
     private LocalDate dataNascimento;
 
     @ManyToMany(mappedBy = "alunos")
