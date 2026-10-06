@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.gov.sp.fatec.springboot3app2025.entity.Trabalho;
 import br.gov.sp.fatec.springboot3app2025.repository.TrabalhoRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service 
 public class TrabalhoServiceImpl implements TrabalhoService {
