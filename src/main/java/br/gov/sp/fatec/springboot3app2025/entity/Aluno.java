@@ -2,7 +2,10 @@ package br.gov.sp.fatec.springboot3app2025.entity;
 
 import java.time.LocalDate;
 import java.util.Set;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.gov.sp.fatec.springboot3app2025.controller.View;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,20 +21,22 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aln_id")
+    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
     private Long id;
 
     @Column(name = "aln_ra")
+    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
     private Long ra;
 
     @Column(name = "aln_nome")
+    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
     private String nome;
 
     @Column(name = "aln_data_nascimento")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonView({View.DisciplinaView.class, View.TrabalhoView.class})
     private LocalDate dataNascimento;
 
     @ManyToMany(mappedBy = "alunos")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Disciplina> disciplinas;  
 
 

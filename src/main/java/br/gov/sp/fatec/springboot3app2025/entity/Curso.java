@@ -2,8 +2,9 @@ package br.gov.sp.fatec.springboot3app2025.entity;
 
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import br.gov.sp.fatec.springboot3app2025.controller.View;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,17 +22,28 @@ public class Curso {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cur_id")
+    @JsonView({View.DisciplinaView.class, View.CursoView.class})
     private Long id;
 
     @Column(name = "cur_nome")
+    @JsonView({View.CursoView.class})
     private String nome;
 
     @Column(name = "cur_sigla")
+    @JsonView({View.DisciplinaView.class, View.CursoView.class})
     private String sigla;
 
     @OneToMany(mappedBy = "curso", fetch = FetchType.LAZY)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonView({View.CursoView.class})
     private Set<Disciplina> disciplinas;
+
+    public Curso(String nome, String sigla) {
+        this.nome = nome;
+        this.sigla = sigla;
+    }
+
+    public Curso() {
+    }
     
 
     public Long getId() {
