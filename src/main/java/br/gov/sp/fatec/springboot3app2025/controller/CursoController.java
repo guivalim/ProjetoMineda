@@ -1,0 +1,41 @@
+package br.gov.sp.fatec.springboot3app2025.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import br.gov.sp.fatec.springboot3app2025.entity.Curso;
+import br.gov.sp.fatec.springboot3app2025.service.CursoService;
+
+
+@RestController
+@CrossOrigin
+@RequestMapping("/curso")
+
+public class CursoController {
+    private final CursoService service;
+
+    public CursoController(CursoService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    @JsonView(View.CursoView.class)
+    public List<Curso> buscarTodos() {
+        return service.buscarTodos();
+    }
+
+    
+    @PostMapping
+    public Curso cadastrar(@RequestBody Curso curso) {
+        return service.cadastrar(curso);
+    }
+    
+}
