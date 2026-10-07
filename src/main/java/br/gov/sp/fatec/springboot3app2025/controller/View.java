@@ -8,5 +8,7 @@ public class View {
     public static class DisciplinaView {};
 
     public static class TrabalhoView {};
+
+    public static class SocialView {}
     
 }

@@ -25,11 +25,11 @@ public class Aluno {
     private Long id;
 
     @Column(name = "aln_ra")
-    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class})
+    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class,View.SocialView.class})
     private Long ra;
 
     @Column(name = "aln_nome")
-    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class})
+    @JsonView({View.AlunoView.class,View.DisciplinaView.class, View.TrabalhoView.class,View.SocialView.class})
     private String nome;
 
     @Column(name = "aln_data_nascimento")
